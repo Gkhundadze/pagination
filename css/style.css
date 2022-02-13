@@ -1,0 +1,45 @@
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+button{
+    cursor: pointer;
+    margin-right: 10px;
+}
+.wrapper{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 50px;
+}
+.card{
+    width: 200px;
+    height: 100px;
+    background-color: rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 5px;
+}
+.title{
+    color: aliceblue;
+    text-align: center;
+    padding: 5px;
+    height: 30%;
+}
+.body{
+    color: aquamarine;
+    padding: 5px;
+    height: 70%;
+}
+
+
+
+.pagination-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
