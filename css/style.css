@@ -43,3 +43,16 @@ button{
     justify-content: center;
     align-items: center;
 }
+.page-number{
+    background-color: rgba(243, 107, 107, 0.4);
+    padding: 5px 10px;
+    transition: .3s ease-in-out;
+    border-radius: 5px;
+    border: 1px solid grey;
+}   
+.page-number.active{
+    background-color: rgba(255, 0, 0, 0.4);
+}
+.page-number:hover{
+    background-color: rgba(200, 0,0, 0.4);
+}

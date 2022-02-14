@@ -1,10 +1,5 @@
 let cardsArrey = [
     {
-        id: 0,
-        title: 'მენულე',
-        description: 'მენულე description'
-    },
-    {
         id: 1,
         title: 'პირველი',
         description: 'პირველი description'
@@ -26,7 +21,7 @@ let cardsArrey = [
     },
     {
         id: 5,
-        title: 'მეუთე',
+        title: 'მეხუთე',
         description: 'მეუთე description'
     },
     {
@@ -109,26 +104,79 @@ let cardsArrey = [
         title: 'ოცდამეერთე',
         description: 'ოცდამეერთე description'
     },
+    {
+        id: 22,
+        title: 'ოცდამეორე',
+        description: 'ოცდამეორე description'
+    },
+    {
+        id: 23,
+        title: 'ოცდამესამე',
+        description: 'ოცდამესამე description'
+    },
+    {
+        id: 24,
+        title: 'ოცდამეოთხე',
+        description: 'ოცდამეოთხე description'
+    },
 ]
 const wrapper = document.querySelector('.wrapper')
 
+const paginationWrapper = document.querySelector('.pagination-wrapper')
+let pagination = []
+const itemsOnPage = 6
 
-cardsArrey.forEach((item) => {
-    let title = item.title
-    let description = item.description
-    let card = document.createElement('div')
-    card.setAttribute('class', 'card')
-
-    let cardHeading = document.createElement('h3')
-    cardHeading.setAttribute('class', 'title')
-    cardHeading.innerText = title
-
-    let cardBody = document.createElement('p')
-    cardBody.setAttribute('class', 'body')
-    cardBody.innerText = description
-
-    card.append(cardHeading,cardBody)
-    wrapper.append(card)
+//generating pagination buttons based on data length
+for (let i = 1; i <= cardsArrey.length/itemsOnPage; i++) {
+    let paginationBtn = document.createElement('button')
+    paginationBtn.setAttribute('class', 'page-number')
+    paginationBtn.innerText = i
+    paginationWrapper.append(paginationBtn)
+    pagination.push(paginationBtn)
+}
+//generating pagination buttons based on data length
 
 
+let activePageButton;
+pagination.forEach(page => {
+    page.addEventListener('click', () => {
+        if(activePageButton) {
+            activePageButton.classList.remove('active')
+        }
+        activePageButton = page
+        page.classList.add('active')
+        let parsedPageNumber = parseInt(page.innerHTML)
+        let start = (parsedPageNumber -1) * itemsOnPage
+        let end = start + itemsOnPage
+        let itemsToShow = cardsArrey.slice(start, end)
+        wrapper.innerHTML = ''
+        renderItems(itemsToShow)
+    })
 })
+
+// initiate first page on window load
+window.onload = () => {
+    document.querySelector('.page-number').click()
+}
+// initiate first page on window load
+
+
+
+// rendering cards
+function renderItems(itemsArrey) {
+    itemsArrey.forEach((item) => {
+        let title = item.title
+        let description = item.description
+        let card = document.createElement('div')
+        card.setAttribute('class', 'card')
+        let cardHeading = document.createElement('h3')
+        cardHeading.setAttribute('class', 'title')
+        cardHeading.innerText = title
+        let cardBody = document.createElement('p')
+        cardBody.setAttribute('class', 'body')
+        cardBody.innerText = description
+        card.append(cardHeading,cardBody)
+        wrapper.append(card)
+    })
+}
+// rendering cards
