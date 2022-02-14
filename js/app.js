@@ -124,7 +124,7 @@ const wrapper = document.querySelector('.wrapper')
 
 const paginationWrapper = document.querySelector('.pagination-wrapper')
 let pagination = []
-const itemsOnPage = 6
+const itemsOnPage = 4
 
 //generating pagination buttons based on data length
 for (let i = 1; i <= cardsArrey.length/itemsOnPage; i++) {
